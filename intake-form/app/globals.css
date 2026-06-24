@@ -446,3 +446,74 @@ body{
   margin:10px 0 50px;text-align:center;line-height:1.6;
 }
 .pagefoot b{color:var(--slate)}
+
+/* ============================================================
+   /welcome shell — shared top bar + tab toggle that wraps both
+   the agreement (embedded) and the brand-kit form.
+   ============================================================ */
+.shell{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  min-height:100dvh;
+}
+
+/* shared sticky top bar */
+.shell-nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(241,244,246,.88);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  flex:0 0 auto;
+}
+.shell-nav-inner{
+  display:flex;align-items:center;gap:14px;
+  max-width:1000px;margin:0 auto;padding:0 18px;min-height:60px;
+}
+
+/* segmented toggle */
+.tabs{
+  display:inline-flex;gap:4px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:4px;
+}
+.tab{
+  appearance:none;border:0;cursor:pointer;
+  font-family:inherit;font-size:13.5px;font-weight:700;
+  color:var(--slate);background:transparent;
+  padding:8px 16px;border-radius:999px;line-height:1;white-space:nowrap;
+  transition:background .18s ease,color .18s ease,box-shadow .18s ease;
+}
+.tab:hover{color:var(--ink)}
+.tab.on{
+  background:var(--teal);color:#fff;
+  box-shadow:0 2px 8px rgba(11,107,94,.30);
+}
+.tab:focus-visible{outline:none;box-shadow:var(--focus)}
+
+/* views: only the active one is shown; both stay mounted so the
+   form keeps its entries and the agreement keeps its scroll. */
+.view{flex:1 1 auto;min-height:0}
+.view[hidden]{display:none}
+
+/* the agreement view fills the space under the nav, scrolls inside */
+.view-agreement{display:flex;flex-direction:column}
+.view-agreement[hidden]{display:none}
+.agreement-frame{
+  flex:1 1 auto;min-height:0;
+  width:100%;border:0;display:block;
+  background:var(--bg);
+}
+
+@media (max-width:520px){
+  .shell-nav-inner{
+    flex-wrap:wrap;justify-content:center;
+    gap:10px;min-height:0;padding-top:10px;padding-bottom:10px;
+  }
+  .brandmark{margin-right:0;width:100%;text-align:center}
+  .tabs{width:100%}
+  .tab{flex:1 1 0;text-align:center}
+}

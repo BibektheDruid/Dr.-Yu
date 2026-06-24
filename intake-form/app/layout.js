@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'SecondBrain · Your Brand Kit · Dr. Yu',
-  description: 'A simple page to send us everything we need to build your SecondBrain.',
+  title: 'SecondBrain · Dr. Yu',
+  description: 'Your Growth plan agreement and brand kit, in one place.',
   robots: { index: false, follow: false },
 };
 
