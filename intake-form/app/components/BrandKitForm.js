@@ -238,6 +238,7 @@ export function BrandKitForm() {
   });
   const [logins, setLogins] = useState({
     website: '',
+    github: '',
     shopify: '',
     janeApp: '',
     domain: '',
@@ -389,6 +390,7 @@ export function BrandKitForm() {
         },
         logins: {
           website: logins.website,
+          github: logins.github,
           shopify: logins.shopify,
           janeApp: logins.janeApp,
           domain: logins.domain,
@@ -751,6 +753,12 @@ export function BrandKitForm() {
               <label className="label" htmlFor="l-website">Website and hosting <span className="opt">(link or username)</span></label>
               <input id="l-website" className="input" type="text" placeholder="For example: your web address, or the company that runs your site"
                 value={logins.website} onChange={setLoginsF('website')} disabled={busy} />
+            </div>
+            <div className="field">
+              <label className="label" htmlFor="l-github">Access to your GitHub repository <span className="opt">(link or username)</span></label>
+              <span className="help">This is where all the code for both websites lives, so we can go in and edit your existing sites. A link or your username is perfect.</span>
+              <input id="l-github" className="input" type="text" placeholder="For example: github.com/yourname/your-site"
+                value={logins.github} onChange={setLoginsF('github')} disabled={busy} />
             </div>
             <div className="field">
               <label className="label" htmlFor="l-shopify">Shopify store <span className="opt">(link or username)</span></label>
