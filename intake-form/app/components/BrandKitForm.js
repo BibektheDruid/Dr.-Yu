@@ -145,9 +145,9 @@ function Dropzone({ id, label, help, files, onAdd, onRemove, statuses, disabled 
         <span className="dz-icon">
           <IconUpload />
         </span>
-        <span className="dz-title">Drop files here</span>
+        <span className="dz-title">Add your files</span>
         <span className="dz-sub">
-          Or <span className="dz-browse">tap to choose</span> from your phone or computer. You can add more than one.
+          <span className="dz-browse">Tap here</span> to choose from your phone. You can add more than one. (On a computer, you can also drag files in.)
         </span>
         <input
           ref={inputRef}
@@ -184,7 +184,7 @@ function Dropzone({ id, label, help, files, onAdd, onRemove, statuses, disabled 
                     <span className={'file-status ' + st.state}>
                       {st.state === 'up' && 'Sending...'}
                       {st.state === 'done' && 'Sent'}
-                      {st.state === 'err' && 'Could not send. Tap Try sending again below.'}
+                      {st.state === 'err' && 'Did not send. Use the button at the bottom to try again.'}
                     </span>
                   ) : (
                     <span className="file-size">{formatSize(f.file.size)}</span>
@@ -464,10 +464,10 @@ export function BrandKitForm() {
           <div className="badge">
             <IconCheck />
           </div>
-          <h2>Thank you. We got everything.</h2>
+          <h2>Thank you. We got what you sent.</h2>
           <p>
-            We have your brand kit. <b>We will take it from here</b> and start building your SecondBrain.
-            If we need one more thing, we will send you a friendly note.
+            <b>We will take it from here</b> and start building your SecondBrain.
+            Got more to add later? Just come back to this page any time. If we need one more thing, we will send you a friendly note.
           </p>
           <span className="pill">
             <IconShield />
@@ -497,8 +497,9 @@ export function BrandKitForm() {
             Send us your <span className="accent">brand kit</span>
           </h1>
           <p>
-            This is where you send us everything we need to build your SecondBrain. Fill in what you have now.
-            You can come back any time and finish the rest. There is no pressure.
+            This is where you send everything from your checklist in <b>The Agreement</b> — the details and files we need
+            to build your SecondBrain, the smart helper we are setting up for Wellspring and SightSage. Add what you have now;
+            you can come back any time to finish the rest.
           </p>
           <span className="safe">
             <IconShield />
@@ -514,13 +515,13 @@ export function BrandKitForm() {
 
       <div className="wrap">
         <p className="reassure">
-          <b>You do not need to fill in everything.</b> Send what you have, skip what you do not, and come back later.
+          <b>You do not need to fill in everything.</b> Not sure which box a file goes in? Put it in any box — we will sort it out.
           Anything you upload is sent straight to us, safely.
         </p>
 
         <div className="savebar">
           <IconSave />
-          Tip: you can fill this in on your phone or your computer. Both work the same.
+          Tip: your answers are saved when you send. You can stop and come back any time.
         </div>
 
         <form className="form" onSubmit={handleSubmit}>
@@ -614,8 +615,8 @@ export function BrandKitForm() {
 
             <Dropzone
               id="dz-style"
-              label="Anything that shows your style"
-              help="An old website screenshot, a flyer, or an ad. Anything helps."
+              label="Examples of your current look"
+              help="An old website screenshot, a flyer, or an ad. Anything helps — not sure? Any box is fine."
               files={styleFiles}
               onAdd={makeAdd(setStyleFiles)}
               onRemove={makeRemove(setStyleFiles)}
@@ -736,7 +737,7 @@ export function BrandKitForm() {
               <span className="sec-num">4</span>
               <h2 className="sec-title">Your logins</h2>
             </div>
-            <p className="sec-desc">Just the usernames or web links. This helps the helper connect to your tools.</p>
+            <p className="sec-desc">Just web links or usernames — never passwords. Skip any you are not sure about; we can ask later.</p>
 
             <div className="secure-note">
               <span className="ic"><IconLock /></span>
@@ -748,7 +749,7 @@ export function BrandKitForm() {
 
             <div className="field">
               <label className="label" htmlFor="l-website">Website and hosting <span className="opt">(link or username)</span></label>
-              <input id="l-website" className="input" type="text" placeholder="For example: a web address, or who hosts your site"
+              <input id="l-website" className="input" type="text" placeholder="For example: your web address, or the company that runs your site"
                 value={logins.website} onChange={setLoginsF('website')} disabled={busy} />
             </div>
             <div className="field">
@@ -762,8 +763,8 @@ export function BrandKitForm() {
                 value={logins.janeApp} onChange={setLoginsF('janeApp')} disabled={busy} />
             </div>
             <div className="field">
-              <label className="label" htmlFor="l-domain">Domain, your web address <span className="opt">(link or username)</span></label>
-              <input id="l-domain" className="input" type="text" placeholder="For example: where you bought your web address"
+              <label className="label" htmlFor="l-domain">Domain name <span className="opt">(link or username)</span></label>
+              <input id="l-domain" className="input" type="text" placeholder="For example: where you bought your web address, like GoDaddy or Namecheap"
                 value={logins.domain} onChange={setLoginsF('domain')} disabled={busy} />
             </div>
             <div className="field">
@@ -772,7 +773,8 @@ export function BrandKitForm() {
                 value={logins.googleBusiness} onChange={setLoginsF('googleBusiness')} disabled={busy} />
             </div>
             <div className="field">
-              <label className="label" htmlFor="l-sender">An email the helper can send from</label>
+              <label className="label" htmlFor="l-sender">Email address the helper should send from</label>
+              <span className="help">The address you would like replies to come from, like hello@yourclinic.com. Just the address — no password.</span>
               <input id="l-sender" className="input" type="email" inputMode="email" placeholder="For example: hello@yourclinic.com"
                 value={logins.senderEmail} onChange={setLoginsF('senderEmail')} disabled={busy} />
             </div>
@@ -790,12 +792,12 @@ export function BrandKitForm() {
               <h2 className="sec-title">Your products (SightSage)</h2>
             </div>
             <p className="sec-desc">
-              The more you tell us, the better the helper can talk about your products. Share what you can, or just drop a sheet or file.
+              The more you tell us, the better the helper can talk about your products. Share what you can, or just add a sheet or file.
             </p>
 
             <div className="field">
               <label className="label" htmlFor="p-notes">Tell us about your products</label>
-              <span className="help">Only if it is handy, the points below make helpful prompts. A sheet or file is just as good.</span>
+              <span className="help">No need to write a lot. The list below is just to spark ideas — or simply add a sheet or file instead.</span>
               <textarea id="p-notes" className="textarea tall"
                 placeholder={'Only if it is handy, you could share:\nWhat it is and what it does.\nHow it helps the customer.\nWho it is for.\nThe price, the sizes, and how to use it.\nThe questions customers ask the most.\nThe problems it fixes, and why some people hold back.\nStock, shipping, and returns.'}
                 value={products.notes} onChange={setProductsF('notes')} disabled={busy} />
@@ -804,7 +806,7 @@ export function BrandKitForm() {
             <Dropzone
               id="dz-products"
               label="Product sheets, files, and photos"
-              help="Drop any product sheet, price list, or clear photo. This saves you a lot of typing."
+              help="Add any product sheet, price list, or clear photo. This saves you a lot of typing."
               files={productFiles}
               onAdd={makeAdd(setProductFiles)}
               onRemove={makeRemove(setProductFiles)}
@@ -868,13 +870,13 @@ export function BrandKitForm() {
             </div>
 
             <div className="field">
-              <label className="label" htmlFor="h-always">Words it must always use</label>
+              <label className="label" htmlFor="h-always">Words the helper should always use</label>
               <textarea id="h-always" className="textarea" placeholder="Any words or phrases the helper should always use."
                 value={helper.alwaysSay} onChange={(e) => setHelper((p) => ({ ...p, alwaysSay: e.target.value }))} disabled={busy} />
             </div>
 
             <div className="field">
-              <label className="label" htmlFor="h-never">Words it must never use</label>
+              <label className="label" htmlFor="h-never">Words the helper should never use</label>
               <textarea id="h-never" className="textarea" placeholder="Any words or phrases the helper should never use."
                 value={helper.neverSay} onChange={(e) => setHelper((p) => ({ ...p, neverSay: e.target.value }))} disabled={busy} />
               <div className="fixed-note">
@@ -901,7 +903,7 @@ export function BrandKitForm() {
             <Dropzone
               id="dz-else"
               label="Any other files"
-              help="Drop anything here. We will sort it out."
+              help="Add anything here. We will sort it out."
               files={elseFiles}
               onAdd={makeAdd(setElseFiles)}
               onRemove={makeRemove(setElseFiles)}

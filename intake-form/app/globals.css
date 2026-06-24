@@ -336,7 +336,7 @@ body{
 .file-status{display:block;font-size:12px;font-weight:600;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .file-status.up{color:var(--teal-dk)}
 .file-status.done{color:var(--gold-dk)}
-.file-status.err{color:#c0392b}
+.file-status.err{color:#c0392b;white-space:normal;overflow:visible}
 
 /* ===== submit area ===== */
 .submit-wrap{
