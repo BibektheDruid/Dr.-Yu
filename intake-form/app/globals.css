@@ -448,7 +448,7 @@ body{
 .pagefoot b{color:var(--slate)}
 
 /* ============================================================
-   /welcome shell — shared top bar + tab toggle that wraps both
+   /welcome shell: shared top bar + tab toggle that wraps both
    the agreement (embedded) and the brand-kit form.
    ============================================================ */
 .shell{

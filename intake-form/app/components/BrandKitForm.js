@@ -497,7 +497,7 @@ export function BrandKitForm() {
             Send us your <span className="accent">brand kit</span>
           </h1>
           <p>
-            This is where you send everything from your checklist in <b>The Agreement</b> — the details and files we need
+            This is where you send everything from your checklist in <b>The Agreement</b>. These are the details and files we need
             to build your SecondBrain, the smart helper we are setting up for Wellspring and SightSage. Add what you have now;
             you can come back any time to finish the rest.
           </p>
@@ -515,7 +515,7 @@ export function BrandKitForm() {
 
       <div className="wrap">
         <p className="reassure">
-          <b>You do not need to fill in everything.</b> Not sure which box a file goes in? Put it in any box — we will sort it out.
+          <b>You do not need to fill in everything.</b> Not sure which box a file goes in? Put it in any box. We will sort it out.
           Anything you upload is sent straight to us, safely.
         </p>
 
@@ -616,7 +616,7 @@ export function BrandKitForm() {
             <Dropzone
               id="dz-style"
               label="Examples of your current look"
-              help="An old website screenshot, a flyer, or an ad. Anything helps — not sure? Any box is fine."
+              help="An old website screenshot, a flyer, or an ad. Anything helps. Not sure? Any box is fine."
               files={styleFiles}
               onAdd={makeAdd(setStyleFiles)}
               onRemove={makeRemove(setStyleFiles)}
@@ -737,7 +737,7 @@ export function BrandKitForm() {
               <span className="sec-num">4</span>
               <h2 className="sec-title">Your logins</h2>
             </div>
-            <p className="sec-desc">Just web links or usernames — never passwords. Skip any you are not sure about; we can ask later.</p>
+            <p className="sec-desc">Just web links or usernames, never passwords. Skip any you are not sure about; we can ask later.</p>
 
             <div className="secure-note">
               <span className="ic"><IconLock /></span>
@@ -774,7 +774,7 @@ export function BrandKitForm() {
             </div>
             <div className="field">
               <label className="label" htmlFor="l-sender">Email address the helper should send from</label>
-              <span className="help">The address you would like replies to come from, like hello@yourclinic.com. Just the address — no password.</span>
+              <span className="help">The address you would like replies to come from, like hello@yourclinic.com. Just the address, no password.</span>
               <input id="l-sender" className="input" type="email" inputMode="email" placeholder="For example: hello@yourclinic.com"
                 value={logins.senderEmail} onChange={setLoginsF('senderEmail')} disabled={busy} />
             </div>
@@ -797,7 +797,7 @@ export function BrandKitForm() {
 
             <div className="field">
               <label className="label" htmlFor="p-notes">Tell us about your products</label>
-              <span className="help">No need to write a lot. The list below is just to spark ideas — or simply add a sheet or file instead.</span>
+              <span className="help">No need to write a lot. The list below is just to spark ideas, or simply add a sheet or file instead.</span>
               <textarea id="p-notes" className="textarea tall"
                 placeholder={'Only if it is handy, you could share:\nWhat it is and what it does.\nHow it helps the customer.\nWho it is for.\nThe price, the sizes, and how to use it.\nThe questions customers ask the most.\nThe problems it fixes, and why some people hold back.\nStock, shipping, and returns.'}
                 value={products.notes} onChange={setProductsF('notes')} disabled={busy} />

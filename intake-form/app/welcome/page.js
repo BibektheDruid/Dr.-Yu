@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import { BrandKitForm } from '../components/BrandKitForm';
 
 /* =============================================================
-   /welcome — the one place Dr. Yu needs.
+   /welcome: the one place Dr. Yu needs.
    A single page with a top toggle between two views:
      • The Agreement  (the approved Growth plan, embedded as-is)
      • Your Brand Kit (the intake form)
    Both views stay mounted so switching is instant and nothing is
-   lost — his half-filled form survives a trip back to the agreement.
+   lost; his half-filled form survives a trip back to the agreement.
    The active view is mirrored in the URL hash so a refresh or a
    shared link keeps its place.
    ============================================================= */
