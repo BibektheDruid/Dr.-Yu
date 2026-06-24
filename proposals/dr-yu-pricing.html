@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SecondBrain · Pricing for Wellspring &amp; SightSage</title>
+<style>
+  :root{
+    --teal:#0b6b5e; --teal-dk:#085147; --teal-lt:#e6f2f0;
+    --ink:#16202c; --slate:#46566a; --muted:#7c8794;
+    --line:#e3e8ed; --bg:#f1f4f6; --card:#ffffff; --soft:#f6f8f9;
+    --gold:#c79a3a; --gold-lt:#fbf3df; --gold-dk:#9a7726;
+    --shadow:0 10px 30px rgba(20,40,60,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+  .narrow{max-width:680px}
+
+  /* ===== sticky nav ===== */
+  .topnav{position:sticky;top:0;z-index:50;background:rgba(241,244,246,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topnav .wrap{display:flex;align-items:center;gap:14px;height:60px}
+  .brandmark{font-weight:800;font-size:17px;color:var(--teal);letter-spacing:-.3px;margin-right:auto}
+  .brandmark small{display:block;font-weight:500;font-size:10.5px;color:var(--muted);letter-spacing:0}
+
+  /* ===== entrance animation ===== */
+  .stagger{animation:rise .55s cubic-bezier(.22,1,.36,1) both}
+  .stagger:nth-child(1){animation-delay:.04s}
+  .stagger:nth-child(2){animation-delay:.10s}
+  .stagger:nth-child(3){animation-delay:.16s}
+  .stagger:nth-child(4){animation-delay:.22s}
+  .stagger:nth-child(5){animation-delay:.28s}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  /* ===== hero (compact, centered) ===== */
+  .hero{background:linear-gradient(160deg,#0b6b5e,#0d7d6d 60%,#13947f);color:#fff;padding:42px 0 36px;border-radius:0 0 22px 22px}
+  .hero .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:13px;max-width:660px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#bfe6df}
+  .hero .rule{width:46px;height:3px;border-radius:3px;background:var(--gold)}
+  .hero h1{font-size:30px;line-height:1.18;font-weight:800;letter-spacing:-.4px}
+  .hero p{font-size:15.5px;color:#e4f3f0;max-width:520px}
+  .hero .for{font-size:12.5px;color:#a9d8d0;line-height:1.55;margin-top:5px}
+  .hero .for b{color:#dff0ec;font-weight:600}
+
+  .lead{font-size:16px;color:var(--slate);margin:30px auto 4px;text-align:center}
+  .lead b{color:var(--ink)}
+
+  /* ===== pricing grid ===== */
+  .grid{display:grid;grid-template-columns:1fr;gap:18px;margin:26px 0 8px;align-items:start}
+  @media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 4px 14px rgba(20,40,60,.05);position:relative;overflow:hidden;transition:box-shadow .25s,transform .25s,border-color .25s}
+  .tier:hover{box-shadow:0 14px 34px rgba(20,40,60,.13);transform:translateY(-3px)}
+  @property --angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+  .tier.feat-tier{border:0;--angle:0deg;box-shadow:0 16px 40px rgba(160,120,40,.18)}
+  .tier.feat-tier::before{content:"";position:absolute;inset:0;border-radius:18px;padding:2px;background:conic-gradient(from var(--angle),var(--gold) 0deg,var(--gold) 60deg,#e8c66e 80deg,#fff7e6 90deg,#e8c66e 100deg,var(--gold) 120deg,var(--gold) 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none;z-index:5;animation:comet 4.5s linear infinite}
+  @keyframes comet{to{--angle:360deg}}
+  .tier.pw-tier{border:0;--angle:0deg;box-shadow:0 16px 40px rgba(225,98,63,.18)}
+  .tier.pw-tier::before{content:"";position:absolute;inset:0;border-radius:18px;padding:2px;background:conic-gradient(from var(--angle),#e1623f 0deg,#e1623f 60deg,#f3a18d 80deg,#fff1ea 90deg,#f3a18d 100deg,#e1623f 120deg,#e1623f 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none;z-index:5;animation:comet 4.5s linear infinite}
+  .tier.pw-tier .tier-name{color:#c24a2a}
+  .tier.pw-tier .check{background:#fce9e3;color:#c24a2a}
+  .tier.pw-tier .tier-build{background:#fce9e3;border-color:#f3cabb;color:#c24a2a}
+  .tier.pw-tier .tier-build svg{color:#c24a2a}
+  .tier.pw-tier .bestfor b{color:#c24a2a}
+  @media (prefers-reduced-motion:reduce){.tier.feat-tier::before,.tier.pw-tier::before{animation:none}}
+
+  .ribbon{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--gold);color:#fff;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:7px 10px}
+
+  .tier-head{display:block;width:100%;text-align:left;border:0;background:transparent;font:inherit;cursor:pointer;padding:22px 22px 18px;-webkit-tap-highlight-color:transparent}
+  .tier-name{font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--teal)}
+  .feat-tier .tier-name{color:var(--gold-dk)}
+  .tier-tag{font-size:14.5px;color:var(--slate);margin-top:5px;min-height:42px}
+  .tier-price{display:flex;align-items:baseline;gap:8px;margin-top:14px}
+  .tier-price .amt{font-size:34px;font-weight:800;letter-spacing:-.6px;color:var(--ink)}
+  .tier-price .per{font-size:13px;font-weight:600;color:var(--muted)}
+  .tier-build{display:inline-flex;align-items:center;gap:6px;margin-top:13px;font-size:12.5px;font-weight:600;color:var(--slate);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+  .tier-build svg{width:13px;height:13px;flex:0 0 auto;color:var(--teal)}
+  .feat-tier .tier-build{background:var(--gold-lt);border-color:#ecd9ab;color:var(--gold-dk)}
+  .feat-tier .tier-build svg{color:var(--gold-dk)}
+
+  .tier-cue{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}
+  .cue-text{font-size:12.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--teal)}
+  .chev{width:20px;height:20px;color:var(--teal);transition:transform .32s cubic-bezier(.22,1,.36,1);flex:0 0 auto}
+  .tier.open .chev{transform:rotate(180deg)}
+
+  /* smooth expand */
+  .tier-exp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.22,1,.36,1)}
+  .tier.open .tier-exp{grid-template-rows:1fr}
+  .tier-exp-inner{overflow:hidden}
+  .exp-pad{padding:4px 22px 24px}
+
+  .feat{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:4px}
+  .feat li{display:flex;gap:10px;font-size:13.8px;color:var(--slate);line-height:1.45}
+  .feat li b{color:var(--ink);font-weight:600}
+  .feat .hl{background:var(--gold-lt);color:var(--gold-dk);font-weight:700;padding:0 5px;border-radius:5px}
+  .check{flex:0 0 auto;width:19px;height:19px;border-radius:50%;background:var(--teal-lt);color:var(--teal);display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .feat-tier .check{background:var(--gold-lt);color:var(--gold-dk)}
+  .check svg{width:11px;height:11px}
+
+  .bestfor{margin-top:16px;background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:11px 14px;font-size:13px;color:var(--slate)}
+  .bestfor b{color:var(--teal);font-weight:700}
+  .feat-tier .bestfor b{color:var(--gold-dk)}
+
+  /* under-the-hood technical block */
+  .tech{margin-top:15px;padding-top:13px;border-top:1px dashed var(--line)}
+  .tech-label{font-size:10.5px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+  .tech-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .tech-list li{display:flex;gap:8px;font-size:12.3px;color:var(--muted);line-height:1.42}
+  .tech-list li::before{content:"›";color:var(--teal);font-weight:800;flex:0 0 auto}
+  .tech-list b{color:var(--slate);font-weight:600}
+  .feat-tier .tech-list li::before{color:var(--gold-dk)}
+  .pw-tier .tech-list li::before{color:#c24a2a}
+
+  /* ===== baseline band ===== */
+  .baseline{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:22px 0 8px;box-shadow:0 4px 14px rgba(20,40,60,.05)}
+  .baseline h3{font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--teal);font-weight:700;margin-bottom:13px}
+  .pillrow{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{background:var(--teal-lt);color:var(--teal-dk);font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid #cfe6e1}
+
+  /* ===== notes / faq ===== */
+  .notes{margin:26px 0 8px}
+  .notes h2{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.2px;margin-bottom:14px;text-align:center}
+  .faq{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.faq{grid-template-columns:repeat(2,1fr)}}
+  .faq .q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 4px 14px rgba(20,40,60,.05)}
+  .faq .q b{display:block;font-size:13.8px;color:var(--ink);margin-bottom:6px}
+  .faq .q p{font-size:13px;color:var(--slate)}
+
+  /* ===== close ===== */
+  .close{background:var(--teal);color:#fff;border-radius:18px;padding:30px 32px;margin-top:30px;text-align:center}
+  .close h2{font-size:21px;font-weight:800;margin-bottom:8px;color:#fff}
+  .close p{font-size:15px;color:#e4f3f0;max-width:560px;margin:0 auto}
+  .close .step2{font-size:14px;color:#bfe6df;margin-top:13px}
+
+  .pagefoot{font-size:11.5px;color:var(--muted);margin:24px 0 60px;text-align:center;line-height:1.6}
+  .pagefoot b{color:var(--slate)}
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="topnav">
+    <div class="wrap">
+      <div class="brandmark">SecondBrain<small>Pricing for Dr. Yu</small></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero stagger">
+    <div class="wrap">
+      <div class="kicker">SecondBrain · Pricing</div>
+      <div class="rule"></div>
+      <h1>Three ways to put your customer service agent to work.</h1>
+      <p>One build, yours to keep. Pick the scope that fits Wellspring Clinic and the SightSage store today, then tap any tier to see exactly what's inside.</p>
+      <div class="for"><b>Prepared by Mike Shields and Jordan Kwan</b><br>for Dr. Weidong Yu · Wellspring Clinic &amp; SightSage</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="lead narrow stagger">
+      Every tier is a <b>one-time build</b>. No monthly fees, no platform lock-in. You own the assistant and the data.
+    </p>
+
+    <!-- PRICING GRID -->
+    <div class="grid">
+
+      <!-- STARTER -->
+      <article class="tier stagger" data-tier="starter">
+        <button class="tier-head" aria-expanded="false">
+          <div class="tier-name">Starter</div>
+          <div class="tier-tag">The MVP. Answers questions and books.</div>
+          <div class="tier-price"><span class="amt">$2,500</span><span class="per">one-time</span></div>
+          <div class="tier-build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Build time: 2 weeks</div>
+          <div class="tier-cue">
+            <span class="cue-text">What's included</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="tier-exp"><div class="tier-exp-inner"><div class="exp-pad">
+          <ul class="feat">
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Connects to your existing website</b> (Wellspring and SightSage), no rebuild needed</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Answers questions about the <b>SightSage products</b> listed on the site</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Answers <b>booking questions</b> about consultations</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Books appointments on the spot</b>: patients pick a time without leaving the page</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Admin workspace</b>: view your bookings, read every prospective client's intake form, and set your availability, all in one place</span></li>
+          </ul>
+          <div class="tech">
+            <div class="tech-label">Technical stack</div>
+            <ul class="tech-list">
+              <li><span><b>Embeddable JavaScript widget</b>: we add the chat helper to your websites in one step, with no rebuild</span></li>
+              <li><span><b>RAG knowledge base</b>: we load in all your products, treatments, prices, and answers, so it always replies with your real info, never a guess</span></li>
+              <li><span><b>Claude model routing (Haiku and Sonnet)</b>: a fast AI for easy questions and a smart one for hard ones, and it never gives medical advice</span></li>
+              <li><span><b>Calendly Scheduling API</b>: people pick an open time and book right in the chat, into your calendar</span></li>
+              <li><span><b>Next.js admin dashboard</b>: one simple page to see bookings, read patient forms, and set the times you are free</span></li>
+            </ul>
+          </div>
+          <div class="bestfor"><b>Best for:</b> a fast MVP that answers product and booking questions, then books on the spot.</div>
+        </div></div></div>
+      </article>
+
+      <!-- GROWTH (recommended) -->
+      <article class="tier feat-tier open stagger" data-tier="growth">
+        <div class="ribbon">★ Recommended</div>
+        <button class="tier-head" aria-expanded="true">
+          <div class="tier-name">Growth</div>
+          <div class="tier-tag">The complete setup. The one to choose.</div>
+          <div class="tier-price"><span class="amt">$5,000</span><span class="per">one-time</span></div>
+          <div class="tier-build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Build time: 3 weeks</div>
+          <div class="tier-cue">
+            <span class="cue-text">What's included</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="tier-exp"><div class="tier-exp-inner"><div class="exp-pad">
+          <ul class="feat">
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Everything in Starter</b>, plus:</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Clean website revamp</b>: both sites rebuilt and optimized for booking, then the agent wired into the new site</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>1-hour follow-up</b> after every booking or order: confirms, asks for feedback, captures a rating</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Turns SightSage questions into orders</b>: <span class="hl">first-order discount codes</span> and back-in-stock alerts</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Full checkout inside the chat</b>: cart, upsells, and payment <span class="hl">without leaving the chat</span></span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Integrated learning loop</b>: it gets smarter with every conversation and rating</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Captures, qualifies, and routes</b> every inquiry by need and urgency</span></li>            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Daily summary</b>, sorted by urgency</span></li>
+          </ul>
+          <div class="tech">
+            <div class="tech-label">Technical stack</div>
+            <ul class="tech-list">
+              <li><span><b>Next.js, React and Tailwind website rebuild</b>: we rebuild both sites so they look clean, load fast, and rank higher on Google</span></li>
+              <li><span><b>Shopify Storefront API</b>: customers see your real products, with photos and prices, right in the chat</span></li>
+              <li><span><b>Shopify Cart API to Shop Pay</b>: they add items to a cart and check out safely, all in one smooth flow</span></li>
+              <li><span><b>Calendly and Shopify webhooks</b>: one hour after any booking or order, it sends a friendly check-in and asks for a rating</span></li>
+              <li><span><b>Capture-and-route engine (Claude)</b>: it sends every message to the right person, sorted by new or returning, how urgent, and clinic or store</span></li>
+              <li><span><b>Learning-loop pipeline</b>: you rate or fix its answers, and it gets smarter over time</span></li>
+            </ul>
+          </div>
+          <div class="bestfor"><b>Best for:</b> almost everyone. If you're not sure which tier, choose this one.</div>
+        </div></div></div>
+      </article>
+
+      <!-- POWERHOUSE -->
+      <article class="tier pw-tier stagger" data-tier="powerhouse">
+        <button class="tier-head" aria-expanded="false">
+          <div class="tier-name">Powerhouse</div>
+          <div class="tier-tag">Fully wired, fully managed.</div>
+          <div class="tier-price"><span class="amt">$7,500</span><span class="per">one-time</span></div>
+          <div class="tier-build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Build time: 4 weeks</div>
+          <div class="tier-cue">
+            <span class="cue-text">What's included</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="tier-exp"><div class="tier-exp-inner"><div class="exp-pad">
+          <ul class="feat">
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Everything in Growth</b>, plus:</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Integrates with all your platforms</b>: Instagram, WhatsApp, Facebook, and more</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>90-day done-for-you optimization</b>: we run, tune, and update it for you, so you touch nothing</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Writes into your patient records</b>: every booking and intake detail is saved straight into your existing patient system, with no manual entry</span></li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Conversion analytics</b>: consults booked and SightSage orders, measured on your real numbers</span></li>          </ul>
+          <div class="tech">
+            <div class="tech-label">Technical stack</div>
+            <ul class="tech-list">
+              <li><span><b>Meta Graph API</b>: one helper answers messages and comments on Instagram, Facebook, and WhatsApp, so you stop checking three places</span></li>
+              <li><span><b>WhatsApp Business Platform, Instagram Messaging API, and Facebook Messenger Platform</b>: people can reach you on any of the three and get the same fast answers</span></li>
+              <li><span><b>Meta webhooks and Send API</b>: it answers right away, and if someone comments on a post it can send them a private message with product or booking info</span></li>
+              <li><span><b>Meta business verification and app review</b>: we handle all the official approvals with Meta, so your accounts stay safe and follow the rules</span></li>
+              <li><span><b>Patient-records write-back (for example Jane App)</b>: bookings and patient info save straight into your system, with no typing it twice</span></li>
+              <li><span><b>PostHog analytics dashboard</b>: shows how many bookings and orders the helper brought in, on your real numbers</span></li>
+              <li><span><b>Deeper AI linking</b>: it connects your store and clinic info to answer bigger, multi-part questions</span></li>
+            </ul>
+          </div>
+          <div class="bestfor"><b>Best for:</b> the complete, hands-off system for clinic and store, with the numbers to prove it.</div>
+        </div></div></div>
+      </article>
+
+    </div>
+
+    <!-- BASELINE BAND -->
+    <div class="baseline stagger">
+      <h3>Every tier includes</h3>
+      <div class="pillrow">
+        <span class="pill">Custom-built for your practice</span>
+        <span class="pill">PIPA + PIPEDA compliant</span>
+        <span class="pill">You own the data &amp; the build</span>
+        <span class="pill">No monthly fees</span>
+        <span class="pill">No platform lock-in</span>
+      </div>
+    </div>
+
+    <!-- NOTES / FAQ -->
+    <div class="notes stagger">
+      <h2>A few quick answers</h2>
+      <div class="faq">
+        <div class="q">
+          <b>Why no monthly?</b>
+          <p>You pay once and own it outright. No recurring software bill stacking up. The assistant is yours.</p>
+        </div>
+        <div class="q">
+          <b>Will it give medical advice?</b>
+          <p>No. It answers logistics, product, and booking questions, and never diagnoses. Anything clinical is routed to Dr. Yu's team.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLOSE -->
+    <div class="close stagger">
+      <h2>Pick a starting point.</h2>
+      <p>Tell us which tier fits where Wellspring and SightSage are today, and we'll map the exact build on a short call.</p>
+      <p class="step2">Reply whenever you've had a look and we'll make it easy to grab a time.</p>
+    </div>
+
+    <p class="pagefoot">
+      <b>SecondBrain</b> · Offered by Mike Shields and Jordan Kwan, independent contractors, for Dr. Weidong Yu (Wellspring Clinic and SightSage).<br>
+      Pricing is for the one-time build. Scope of each tier is finalized together before we begin.
+    </p>
+  </div>
+
+<script>
+  document.querySelectorAll('.tier-head').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tier = btn.closest('.tier');
+      var open = tier.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+</script>
+</body>
+</html>

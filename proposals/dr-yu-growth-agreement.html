@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>SecondBrain · Your Path to Growth · Dr. Yu</title>
+<style>
+  :root{
+    --teal:#0b6b5e; --teal-dk:#085147; --teal-lt:#e6f2f0;
+    --ink:#16202c; --slate:#46566a; --muted:#7c8794;
+    --line:#e3e8ed; --bg:#f1f4f6; --card:#ffffff; --soft:#f6f8f9;
+    --gold:#c79a3a; --gold-lt:#fbf3df; --gold-dk:#9a7726;
+    --shadow:0 10px 30px rgba(20,40,60,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+  .narrow{max-width:680px}
+
+  /* ===== sticky nav ===== */
+  .topnav{position:sticky;top:0;z-index:50;background:rgba(241,244,246,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topnav .wrap{display:flex;align-items:center;gap:14px;height:60px}
+  .brandmark{font-weight:800;font-size:17px;color:var(--teal);letter-spacing:-.3px;margin-right:auto}
+  .brandmark small{display:block;font-weight:500;font-size:10.5px;color:var(--muted);letter-spacing:0}
+
+  /* ===== entrance animation ===== */
+  .stagger{animation:rise .55s cubic-bezier(.22,1,.36,1) both}
+  .stagger:nth-child(1){animation-delay:.04s}
+  .stagger:nth-child(2){animation-delay:.10s}
+  .stagger:nth-child(3){animation-delay:.16s}
+  .stagger:nth-child(4){animation-delay:.22s}
+  .stagger:nth-child(5){animation-delay:.28s}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.stagger{animation:none}}
+
+  /* ===== hero (compact, centered) ===== */
+  .hero{background:linear-gradient(160deg,#0b6b5e,#0d7d6d 60%,#13947f);color:#fff;padding:46px 0 40px;border-radius:0 0 22px 22px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hero .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;max-width:660px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#bfe6df}
+  .hero .rule{width:46px;height:3px;border-radius:3px;background:var(--gold);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .confirm-pill{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(180deg,#e8c66e,#c79a3a);color:#3d2f0d;font-size:12.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:8px 16px;border-radius:999px;box-shadow:0 6px 18px rgba(160,120,40,.35);border:1px solid #d9b65a;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .confirm-pill svg{width:14px;height:14px;flex:0 0 auto}
+  .hero h1{font-size:clamp(28px,8vw,34px);line-height:1.14;font-weight:800;letter-spacing:-.5px}
+  .hero h1 .accent{color:#f0d488}
+  .hero p{font-size:15.5px;color:#e4f3f0;max-width:540px}
+  .hero .for{font-size:12.5px;color:#a9d8d0;line-height:1.55;margin-top:6px}
+  .hero .for b{color:#dff0ec;font-weight:600}
+
+  /* ===== welcome line ===== */
+  .welcome{font-size:16.5px;color:var(--slate);margin:30px auto 4px;text-align:center;max-width:620px}
+  .welcome b{color:var(--ink)}
+
+  /* ===== section heading ===== */
+  .sec{margin:34px 0 0}
+  .sec-h{font-size:13px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--teal);text-align:center;margin-bottom:6px}
+  .sec-h.gold{color:var(--gold-dk)}
+  .sec-sub{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.3px;text-align:center;margin-bottom:16px}
+
+  /* ===== big picture box ===== */
+  .bigpic{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:8px;margin:18px 0 8px;overflow:hidden;break-inside:avoid;page-break-inside:avoid}
+  .bigpic-inner{display:grid;grid-template-columns:1fr;gap:2px}
+  @media(min-width:680px){.bigpic-inner{grid-template-columns:repeat(3,1fr)}}
+  .bp-cell{text-align:center;padding:20px 16px;border-radius:12px}
+  .bp-cell .bp-top{font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .bp-cell .bp-big{font-size:27px;font-weight:800;letter-spacing:-.5px;color:var(--ink)}
+  .bp-cell .bp-big.gold{color:var(--gold-dk)}
+  .bp-cell .bp-sub{font-size:12.5px;color:var(--slate);margin-top:5px}
+  .bp-cell.feature{background:var(--gold-lt);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  /* ===== what you get card ===== */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 4px 14px rgba(20,40,60,.05);padding:24px 24px 22px;margin:18px 0 8px;break-inside:avoid;page-break-inside:avoid}
+  .feat{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:4px}
+  .feat li{display:flex;gap:11px;font-size:15px;color:var(--slate);line-height:1.5}
+  .feat li b{color:var(--ink);font-weight:600}
+  .check{flex:0 0 auto;width:21px;height:21px;border-radius:50%;background:var(--gold-lt);color:var(--gold-dk);display:flex;align-items:center;justify-content:center;margin-top:2px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .check svg{width:12px;height:12px}
+
+  /* ===== intake (one drop-down) ===== */
+  .intake-intro{text-align:center;font-size:15.5px;color:var(--slate);max-width:620px;margin:0 auto 16px;line-height:1.55}
+  .intake-intro b{color:var(--ink);font-weight:600}
+
+  .dropdown{background:var(--card);border:1px solid #ecd9ab;border-radius:16px;box-shadow:0 6px 18px rgba(160,120,40,.12);overflow:hidden;break-inside:avoid;page-break-inside:avoid}
+  .dd-head{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;border:0;background:linear-gradient(160deg,#0b6b5e,#0d7d6d 60%,#13947f);color:#fff;padding:18px 20px;font-family:inherit;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .dd-head .dd-text{flex:1 1 auto}
+  .dd-head .dd-title{font-size:17px;font-weight:800;letter-spacing:-.2px;line-height:1.25}
+  .dd-head .dd-hint{font-size:13px;color:#bfe6df;margin-top:2px;line-height:1.4}
+  .dd-chev{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:linear-gradient(180deg,#e8c66e,#c79a3a);color:#3d2f0d;display:flex;align-items:center;justify-content:center;transition:transform .3s ease;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .dd-chev svg{width:16px;height:16px}
+  .dropdown.open .dd-chev{transform:rotate(180deg)}
+  .dd-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .dropdown.open .dd-panel{grid-template-rows:1fr}
+  .dd-panel-inner{overflow:hidden}
+  .dd-body{padding:20px 20px 22px}
+
+  .intake-grid{display:grid;grid-template-columns:1fr;gap:22px}
+  @media(min-width:760px){.intake-grid{grid-template-columns:1fr 1fr;gap:28px}}
+  .intake-block{margin-bottom:18px}
+  .intake-block:last-child{margin-bottom:0}
+  .intake-item{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink);font-weight:700;line-height:1.3;margin-bottom:8px}
+  .tickbox{flex:0 0 auto;width:18px;height:18px;border-radius:4px;border:2px solid var(--gold);background:#fff;margin-top:1px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .intake-detail{list-style:none;display:flex;flex-direction:column;gap:7px;margin:0 0 0 28px}
+  .intake-detail li{position:relative;padding-left:15px;font-size:13.5px;color:var(--slate);line-height:1.45}
+  .intake-detail li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--gold);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .intake-detail li b{color:var(--ink);font-weight:600}
+  .intake-close{text-align:center;font-size:15.5px;color:var(--slate);max-width:600px;margin:16px auto 4px;line-height:1.55}
+  .intake-close b{color:var(--ink);font-weight:600}
+
+  /* ===== payments section ===== */
+  .pay-band{background:linear-gradient(160deg,#fdf8ea,#fbf3df);border:1px solid #ecd9ab;border-radius:20px;box-shadow:0 10px 30px rgba(160,120,40,.13);padding:26px 24px 24px;margin:18px 0 8px;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid;page-break-inside:avoid}
+  .pay-lead{font-size:16.5px;color:var(--ink);text-align:center;max-width:620px;margin:0 auto 20px;line-height:1.5}
+  .pay-lead b{color:var(--gold-dk);font-weight:700}
+  .pay-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:760px){.pay-grid{grid-template-columns:repeat(3,1fr)}}
+  .pay-card{background:var(--card);border:1px solid #ecd9ab;border-radius:14px;padding:18px 18px 16px;box-shadow:0 4px 12px rgba(160,120,40,.08);break-inside:avoid;page-break-inside:avoid;display:flex;flex-direction:column}
+  .pay-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(180deg,#e8c66e,#c79a3a);color:#3d2f0d;font-weight:800;font-size:14px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pay-label{font-size:11.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-top:12px}
+  .pay-amt{font-size:26px;font-weight:800;letter-spacing:-.5px;color:var(--gold-dk);margin-top:4px}
+  .pay-cad{font-size:12.5px;font-weight:600;color:var(--muted);margin-left:3px}
+  .pay-when{font-size:13.5px;color:var(--slate);margin-top:9px;line-height:1.45}
+  .pay-when b{color:var(--ink);font-weight:600}
+  .pay-total{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;background:var(--gold-dk);color:#fff;border-radius:14px;padding:16px 20px;margin-top:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid;page-break-inside:avoid}
+  .pay-total .t-label{font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#f5e8c6}
+  .pay-total .t-amt{font-size:24px;font-weight:800;letter-spacing:-.4px;color:#fff}
+  .pay-note{font-size:13px;color:var(--gold-dk);text-align:center;margin-top:13px;line-height:1.5}
+
+  /* ===== how to pay / steps ===== */
+  .topay-to{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;background:var(--gold-lt);border:1px solid #ecd9ab;border-radius:12px;padding:13px 16px;margin-bottom:18px;font-size:14.5px;color:var(--ink);text-align:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .topay-to b{color:var(--gold-dk);font-weight:700}
+  .topay-to .email{font-weight:800;color:var(--gold-dk)}
+  .steps{list-style:none;counter-reset:step;display:flex;flex-direction:column;gap:11px;margin:0}
+  .steps li{display:flex;gap:12px;font-size:15px;color:var(--slate);line-height:1.5}
+  .steps li::before{counter-increment:step;content:counter(step);flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .steps li b{color:var(--ink);font-weight:600}
+  .subnote{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--slate);line-height:1.55}
+  .subnote b{color:var(--ink);font-weight:600}
+  .subnote .qa{color:var(--teal-dk);font-weight:700}
+
+  /* ===== timeline ===== */
+  .timeline{list-style:none;counter-reset:tl;display:flex;flex-direction:column;gap:0;margin:0}
+  .timeline li{display:flex;gap:14px;position:relative;padding-bottom:18px}
+  .timeline li:last-child{padding-bottom:0}
+  .tl-dot{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .timeline li:not(:last-child) .tl-dot::after{content:"";position:absolute;left:14px;top:30px;bottom:0;width:2px;background:var(--line)}
+  .tl-body{padding-top:3px;font-size:15px;color:var(--slate);line-height:1.5}
+  .tl-body b{color:var(--ink);font-weight:600;display:block;margin-bottom:1px}
+
+  /* ===== baseline / guarantees band ===== */
+  .baseline{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:18px 0 8px;box-shadow:0 4px 14px rgba(20,40,60,.05);break-inside:avoid;page-break-inside:avoid}
+  .baseline h3{font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--teal);font-weight:700;margin-bottom:13px;text-align:center}
+  .pillrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .pill{background:var(--teal-lt);color:var(--teal-dk);font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid #cfe6e1;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  /* ===== faq ===== */
+  .faq{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.faq{grid-template-columns:repeat(2,1fr)}}
+  .faq .q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 4px 14px rgba(20,40,60,.05);break-inside:avoid;page-break-inside:avoid}
+  .faq .q b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:6px}
+  .faq .q p{font-size:13.5px;color:var(--slate)}
+
+  /* ===== close band ===== */
+  .close{background:linear-gradient(160deg,#0b6b5e,#0d7d6d 60%,#13947f);color:#fff;border-radius:18px;padding:34px 32px;margin-top:32px;text-align:center;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid;page-break-inside:avoid}
+  .close h2{font-size:23px;font-weight:800;margin-bottom:10px;color:#fff}
+  .close p{font-size:15.5px;color:#e4f3f0;max-width:580px;margin:0 auto}
+  .close p .gold{color:#f0d488;font-weight:700}
+  .close .warm{font-size:14.5px;color:#bfe6df;margin-top:14px}
+
+  .pagefoot{font-size:11.5px;color:var(--muted);margin:24px 0 60px;text-align:center;line-height:1.6}
+  .pagefoot b{color:var(--slate)}
+
+  /* ===== print ===== */
+  @media print{
+    body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .topnav{position:static}
+    .stagger{animation:none}
+    /* force the drop-down open so the PDF shows the full checklist */
+    .dd-panel{grid-template-rows:1fr !important}
+    .dd-panel-inner{overflow:visible !important}
+    .dd-chev{transform:rotate(180deg)}
+    .hero,.close,.pay-band,.bigpic,.card,.baseline,.faq .q,.pay-card,.pay-total,.dropdown{break-inside:avoid;page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="topnav">
+    <div class="wrap">
+      <div class="brandmark">SecondBrain<small>Growth Plan for Dr. Yu</small></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero stagger">
+    <div class="wrap">
+      <div class="kicker">SecondBrain · Growth Plan Confirmed</div>
+      <div class="rule"></div>
+      <div class="confirm-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.1 6.6.7-4.9 4.5 1.3 6.5L12 17.1 6.1 19.8l1.3-6.5L2.5 8.8l6.6-.7L12 2z"/></svg>
+        Growth Plan · Confirmed
+      </div>
+      <h1>Your Path to <span class="accent">Growth</span></h1>
+      <p>You made a great choice. This page shows what you get. It shows what it costs. It shows the easy steps to start. Let us build it for you.</p>
+      <div class="for"><b>Prepared by Mike Shields and Jordan Kwan</b><br>for Dr. Weidong Yu · Wellspring Clinic and SightSage</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- WELCOME LINE -->
+    <p class="welcome narrow stagger">
+      <b>Great pick.</b> The Growth plan gives you everything. It is the one most people pick.
+    </p>
+
+    <!-- WHAT WE NEED FROM YOU TO BEGIN (FIRST REAL SECTION) -->
+    <div class="sec stagger">
+      <div class="sec-h gold">What We Need From You to Begin</div>
+      <div class="sec-sub">A few things so we can start.</div>
+
+      <p class="intake-intro">
+        We can start as soon as your first payment lands. Here is the checklist of what we need. Send what you have now, and we will help you with the rest.
+      </p>
+
+      <div class="dropdown" id="intakeDropdown">
+        <button class="dd-head" type="button" aria-expanded="false" aria-controls="intakePanel" onclick="toggleIntake(this)">
+          <span class="dd-text">
+            <span class="dd-title">Your start-up checklist</span>
+            <span class="dd-hint">Everything we need from you to begin. Tap to open.</span>
+          </span>
+          <span class="dd-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="dd-panel" id="intakePanel">
+          <div class="dd-panel-inner">
+            <div class="dd-body">
+              <div class="intake-grid">
+
+                <!-- LEFT COLUMN -->
+                <div class="intake-col">
+
+                  <div class="intake-block">
+                    <div class="intake-item"><span class="tickbox"></span><span>Your brand</span></div>
+                    <ul class="intake-detail">
+                      <li><b>Logo files.</b> The biggest, clearest version you have.</li>
+                      <li>Your brand colors and any fonts you use.</li>
+                      <li>Photos: your clinic, your products, your team, and a headshot of you.</li>
+                      <li>How you want the helper to talk. For example, warm and friendly, or calm and proper.</li>
+                      <li>Anything that shows your style, like an old website, a flyer, or an ad.</li>
+                    </ul>
+                  </div>
+
+                  <div class="intake-block">
+                    <div class="intake-item"><span class="tickbox"></span><span>Your two businesses (Wellspring Clinic and SightSage)</span></div>
+                    <ul class="intake-detail">
+                      <li>Name, address, phone, email, and open hours for each one.</li>
+                      <li><b>For Wellspring, send us:</b></li>
+                      <li>A list of what you do for patients.</li>
+                      <li>Your staff, with one or two lines about each person.</li>
+                      <li>How people book a visit.</li>
+                      <li>The questions you want new patients to answer first.</li>
+                      <li>What happens if someone is late or skips a visit.</li>
+                    </ul>
+                  </div>
+
+                  <div class="intake-block">
+                    <div class="intake-item"><span class="tickbox"></span><span>Your logins</span></div>
+                    <ul class="intake-detail">
+                      <li>We will send you a safe way to share these. Never put a password in a normal email.</li>
+                      <li>Your website and hosting, for both sites.</li>
+                      <li>Your Shopify store (for SightSage).</li>
+                      <li>Your Jane App login, so the helper can book visits into your calendar.</li>
+                      <li>Your web address login (sometimes called your domain).</li>
+                      <li>Your Google Business page.</li>
+                      <li>An email the helper can send from.</li>
+                    </ul>
+                  </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="intake-col">
+
+                  <div class="intake-block">
+                    <div class="intake-item"><span class="tickbox"></span><span>Your products (SightSage). This part takes the most time. For each product, tell us:</span></div>
+                    <ul class="intake-detail">
+                      <li>What it is and what it does.</li>
+                      <li>How it helps the customer.</li>
+                      <li>Who it is for.</li>
+                      <li>The price, the sizes, and how to use it.</li>
+                      <li>The questions customers ask the most.</li>
+                      <li>What problems it fixes. Why some people are not sure about buying it.</li>
+                      <li>A clear photo.</li>
+                      <li>Stock, shipping, and returns.</li>
+                      <li>A sheet or file is perfect. Just send what you have.</li>
+                    </ul>
+                  </div>
+
+                  <div class="intake-block">
+                    <div class="intake-item"><span class="tickbox"></span><span>Your clinic care (Wellspring). For each treatment, tell us:</span></div>
+                    <ul class="intake-detail">
+                      <li>What it helps with, and what happens at a visit.</li>
+                      <li>Who it is for.</li>
+                      <li>The questions patients ask the most, and the problems it solves.</li>
+                      <li>Care notes for before and after.</li>
+                      <li>The price, how long it takes, and if people can book online.</li>
+                    </ul>
+                  </div>
+
+                  <div class="intake-block">
+                    <div class="intake-item"><span class="tickbox"></span><span>Helper rules and your point person</span></div>
+                    <ul class="intake-detail">
+                      <li>The languages you want. English, and Chinese if you like.</li>
+                      <li>The deal for a first order. Tell us how much money people save, and when they can use it.</li>
+                      <li>Tell us any words it must always use. Tell us any words it must never use. It will never tell people what is wrong with their health.</li>
+                      <li>One person we can reach, and the best way to reach them: text, email, or call.</li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="intake-close"><b>You do not need all of this on day one.</b> Open the list, send what you have, and we will help you find the rest.</p>
+    </div>
+
+    <!-- THE BIG PICTURE -->
+    <div class="sec stagger">
+      <div class="sec-h gold">The Big Picture</div>
+      <div class="sec-sub">Here it all is, in one place.</div>
+      <div class="bigpic">
+        <div class="bigpic-inner">
+          <div class="bp-cell feature">
+            <div class="bp-top">Price</div>
+            <div class="bp-big gold">$5,000.00 CAD</div>
+            <div class="bp-sub">One time. No monthly fees.</div>
+          </div>
+          <div class="bp-cell">
+            <div class="bp-top">Build Time</div>
+            <div class="bp-big">About 3 weeks</div>
+            <div class="bp-sub">From your first payment.</div>
+          </div>
+          <div class="bp-cell">
+            <div class="bp-top">What You Own</div>
+            <div class="bp-big">All of it</div>
+            <div class="bp-sub">Yours to keep. You are never stuck with us.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT YOU GET -->
+    <div class="sec stagger">
+      <div class="sec-h gold">What You Get</div>
+      <div class="sec-sub">A full setup for both of your sites.</div>
+      <div class="card">
+        <ul class="feat">
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>A <b>smart chat helper</b> on both of your websites. It answers questions day or night, even when you are closed.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>It books visits straight into your <b>Jane App</b> calendar. A patient picks a time right in the chat, and it shows up in your schedule. No one has to call, and it will not double book.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Both websites <b>rebuilt</b>. They look clean, load fast, and bring in more bookings.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>It <b>answers questions</b> about your SightSage products and about your visits with patients.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>One hour after each booking or order, it sends a <b>friendly check in</b>. It also asks for a star rating.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>It turns SightSage questions into <b>sales</b>. It can hand out a code to save on a first order. It can tell people when a sold-out item is back.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>People can <b>buy right inside the chat</b>. They can pick items and pay, all in one place.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>It <b>sorts every message</b> by how much it matters. Each day, it sends you a short note about them.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>It gets a little <b>smarter</b> every time it is used.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- YOUR PAYMENTS -->
+    <div class="sec stagger">
+      <div class="sec-h gold">Your Payments</div>
+      <div class="sec-sub">Three easy parts. Simple and fair.</div>
+      <div class="pay-band">
+        <p class="pay-lead">The total is <b>$5,000.00 CAD</b>. You pay it in three parts. The parts are almost the same size. You send each one with your bank app (this is called an e-transfer).</p>
+        <div class="pay-grid">
+
+          <div class="pay-card">
+            <span class="pay-num">1</span>
+            <div class="pay-label">To Start</div>
+            <div class="pay-amt">$1,666.67<span class="pay-cad">CAD</span></div>
+            <div class="pay-when"><b>To start.</b> We begin your build the day this lands.</div>
+          </div>
+
+          <div class="pay-card">
+            <span class="pay-num">2</span>
+            <div class="pay-label">Halfway</div>
+            <div class="pay-amt">$1,666.67<span class="pay-cad">CAD</span></div>
+            <div class="pay-when"><b>Halfway.</b> You pay this about 2 weeks in, when the work is about half done.</div>
+          </div>
+
+          <div class="pay-card">
+            <span class="pay-num">3</span>
+            <div class="pay-label">At the End</div>
+            <div class="pay-amt">$1,666.66<span class="pay-cad">CAD</span></div>
+            <div class="pay-when"><b>At the end.</b> You pay this when your new site and helper are up and given to you.</div>
+          </div>
+
+        </div>
+
+        <div class="pay-total">
+          <span class="t-label">Total</span>
+          <span class="t-amt">$5,000.00 CAD</span>
+        </div>
+
+        <p class="pay-note">The three parts add up to $5,000.00. The last part is one cent less. That makes the total just right.</p>
+      </div>
+    </div>
+
+    <!-- HOW TO PAY -->
+    <div class="sec stagger">
+      <div class="sec-h gold">How to Pay</div>
+      <div class="sec-sub">It takes about one minute.</div>
+      <div class="card">
+        <div class="topay-to">
+          <span>Send each payment by Interac e-Transfer to:</span>
+          <span class="email">mike@reachium.io</span>
+        </div>
+        <ol class="steps">
+          <li><span>Open your bank app or website.</span></li>
+          <li><span>Pick <b>"Interac e-Transfer"</b> or "Send Money".</span></li>
+          <li><span>Enter the email <b>mike@reachium.io</b>.</span></li>
+          <li><span>Type the <b>exact amount</b> for that payment.</span></li>
+          <li><span>In the message box, write the payment name. Like this: <b>"SecondBrain Growth, Payment 1"</b>.</span></li>
+          <li><span>Send it.</span></li>
+        </ol>
+        <div class="subnote">
+          Your bank may ask for a secret question. If it does, use this one. <span class="qa">Question:</span> What is the project name? <span class="qa">Answer:</span> SecondBrain. Or you can turn on Auto Deposit. That is a setting in your bank app. Then your bank will not ask a question.
+        </div>
+        <div class="subnote">
+          Send us a quick message when a payment is on the way. We will confirm we got it.
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT HAPPENS NEXT -->
+    <div class="sec stagger">
+      <div class="sec-h gold">What Happens Next</div>
+      <div class="sec-sub">From your first payment to live.</div>
+      <div class="card">
+        <ol class="timeline">
+          <li>
+            <span class="tl-dot">1</span>
+            <div class="tl-body"><b>You send Payment 1.</b> We start your build that same day.</div>
+          </li>
+          <li>
+            <span class="tl-dot">2</span>
+            <div class="tl-body"><b>We build.</b> We rebuild both websites and add your chat helper. This takes about 3 weeks.</div>
+          </li>
+          <li>
+            <span class="tl-dot">3</span>
+            <div class="tl-body"><b>You send Payment 2.</b> Around the middle of the build.</div>
+          </li>
+          <li>
+            <span class="tl-dot">4</span>
+            <div class="tl-body"><b>We go live.</b> We show you the finished build. You send Payment 3. Then it goes live. It is yours.</div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- YOUR GUARANTEES -->
+    <div class="sec stagger">
+      <div class="sec-h gold">Our Promises to You</div>
+      <div class="sec-sub">Here is what you can count on.</div>
+      <div class="baseline">
+        <div class="pillrow">
+          <span class="pill">Made just for your clinic</span>
+          <span class="pill">We keep your info safe and private</span>
+          <span class="pill">You own all of it, info and all</span>
+          <span class="pill">No monthly fees</span>
+          <span class="pill">You are never stuck with one system</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="sec stagger">
+      <div class="sec-h gold">A Few Quick Answers</div>
+      <div class="sec-sub">Things people often ask.</div>
+      <div class="faq">
+        <div class="q">
+          <b>Why three payments?</b>
+          <p>It keeps things easy and fair for both sides. We move along together as the work gets done.</p>
+        </div>
+        <div class="q">
+          <b>When do you start?</b>
+          <p>The day your first e-transfer lands.</p>
+        </div>
+        <div class="q">
+          <b>Is this all I pay?</b>
+          <p>Yes. It is a one time build. There are no monthly fees.</p>
+        </div>
+        <div class="q">
+          <b>What if I have a question?</b>
+          <p>Just reply to us. We answer fast.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLOSE -->
+    <div class="close stagger">
+      <h2>Ready to begin?</h2>
+      <p>Send your first e-transfer of <span class="gold">$1,666.67 CAD</span> to mike@reachium.io and we start your build that day.</p>
+      <p class="warm">We are excited to build this with you. Let us make something great for Wellspring and SightSage.</p>
+    </div>
+
+    <p class="pagefoot">
+      <b>SecondBrain</b> is made by Mike Shields and Jordan Kwan. They work for themselves. This page is for Dr. Weidong Yu (Wellspring Clinic and SightSage).<br>
+      This page shows the Growth plan and its one time price of $5,000.00 CAD. We will agree on the last small things together before we start.<br>
+      We follow Canada's privacy rules (PIPA and PIPEDA).
+    </p>
+  </div>
+
+  <script>
+    function toggleIntake(btn){
+      var dd = document.getElementById('intakeDropdown');
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  </script>
+
+</body>
+</html>
