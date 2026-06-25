@@ -90,12 +90,8 @@
   .dd-head .dd-text{flex:1 1 auto}
   .dd-head .dd-title{font-size:17px;font-weight:800;letter-spacing:-.2px;line-height:1.25}
   .dd-head .dd-hint{font-size:13px;color:#bfe6df;margin-top:2px;line-height:1.4}
-  .dd-chev{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:linear-gradient(180deg,#e8c66e,#c79a3a);color:#3d2f0d;display:flex;align-items:center;justify-content:center;transition:transform .3s ease;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .dd-chev svg{width:16px;height:16px}
   .dd-head--static{cursor:default}
-  .dropdown.open .dd-chev{transform:rotate(180deg)}
-  .dd-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
-  .dropdown.open .dd-panel{grid-template-rows:1fr}
+  .dd-panel{display:block}
   .dd-panel-inner{overflow:hidden}
   .dd-body{padding:20px 20px 22px}
 
@@ -227,14 +223,14 @@
         We start as soon as we receive your first payment. Here is the checklist of what we need to begin.
       </p>
 
-      <div class="dropdown open" id="intakeDropdown">
+      <div class="dropdown open">
         <div class="dd-head dd-head--static">
           <span class="dd-text">
             <span class="dd-title">Your start-up checklist</span>
             <span class="dd-hint">Everything we need from you to begin.</span>
           </span>
         </div>
-        <div class="dd-panel" id="intakePanel">
+        <div class="dd-panel">
           <div class="dd-panel-inner">
             <div class="dd-body">
               <div class="intake-grid">
