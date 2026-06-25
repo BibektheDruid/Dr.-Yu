@@ -249,9 +249,6 @@ export function BrandKitForm() {
   const [products, setProducts] = useState({ notes: '' });
   const [clinicCare, setClinicCare] = useState({ notes: '' });
   const [helper, setHelper] = useState({
-    english: true,
-    chinese: false,
-    otherLang: '',
     discount: '',
     alwaysSay: '',
     neverSay: '',
@@ -341,11 +338,8 @@ export function BrandKitForm() {
         setProgress({ done, total });
       }
 
-      // build the languages array
-      const languages = [];
-      if (helper.english) languages.push('English');
-      if (helper.chinese) languages.push('Chinese');
-      if (helper.otherLang.trim()) languages.push(helper.otherLang.trim());
+      // the helper speaks English only
+      const languages = ['English'];
 
       // strip the helper field from stored file objects so the payload matches
       const slim = (arr) => arr.map(({ name, url }) => ({ name, url }));
@@ -847,28 +841,6 @@ export function BrandKitForm() {
               <h2 className="sec-title">Helper rules</h2>
             </div>
             <p className="sec-desc">A few simple rules, so the helper always sounds like you.</p>
-
-            <div className="field">
-              <label className="label">Languages</label>
-              <span className="help">Pick the languages you want the helper to use.</span>
-              <div className="checks">
-                <label className={'check-chip' + (helper.english ? ' on' : '')}>
-                  <input type="checkbox" checked={helper.english}
-                    onChange={(e) => setHelper((p) => ({ ...p, english: e.target.checked }))} disabled={busy} />
-                  <span className="box"><IconCheck /></span>
-                  English
-                </label>
-                <label className={'check-chip' + (helper.chinese ? ' on' : '')}>
-                  <input type="checkbox" checked={helper.chinese}
-                    onChange={(e) => setHelper((p) => ({ ...p, chinese: e.target.checked }))} disabled={busy} />
-                  <span className="box"><IconCheck /></span>
-                  Chinese
-                </label>
-              </div>
-              <input className="input" type="text" placeholder="Any other language? Type it here."
-                value={helper.otherLang} onChange={(e) => setHelper((p) => ({ ...p, otherLang: e.target.value }))}
-                disabled={busy} style={{ marginTop: 10 }} aria-label="Any other language" />
-            </div>
 
             <div className="field">
               <label className="label" htmlFor="h-discount">Discount for a first order</label>
