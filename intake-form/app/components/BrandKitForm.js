@@ -338,9 +338,6 @@ export function BrandKitForm() {
         setProgress({ done, total });
       }
 
-      // the helper speaks English only
-      const languages = ['English'];
-
       // strip the helper field from stored file objects so the payload matches
       const slim = (arr) => arr.map(({ name, url }) => ({ name, url }));
 
@@ -398,7 +395,6 @@ export function BrandKitForm() {
         },
         clinicCare: { notes: clinicCare.notes },
         helperRules: {
-          languages,
           discount: helper.discount,
           alwaysSay: helper.alwaysSay,
           neverSay: helper.neverSay,
