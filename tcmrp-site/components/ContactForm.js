@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 
+// text-[16px] on mobile stops iOS Safari from auto-zooming on focus; 15px keeps the desktop design.
 const FIELD =
-  'w-full rounded-lg border border-[#d9d4c9] bg-white px-4 py-3 text-[15px] text-ink placeholder:text-[#a9a59b] outline-none transition-colors focus:border-green focus:ring-2 focus:ring-green/20';
+  'w-full rounded-lg border border-[#d9d4c9] bg-white px-4 py-3 text-[16px] md:text-[15px] text-ink placeholder:text-[#a9a59b] outline-none transition-colors focus:border-green focus:ring-2 focus:ring-green/20';
 const LABEL = 'mb-1.5 block text-[14px] font-medium text-ink';
 
 const EMPTY = {

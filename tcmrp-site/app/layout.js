@@ -18,6 +18,12 @@ export const metadata = {
   icons: { icon: '/wp-content/uploads/2026/06/wellspringicon-150x150.png' },
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#1d6531', // brand green tints the mobile browser chrome
+};
+
 export default function RootLayout({ children }) {
   return (
     <html

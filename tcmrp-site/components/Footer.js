@@ -80,10 +80,10 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h2 className="font-display text-xl text-white">Quick Links</h2>
-            <ul className="mt-5 space-y-3 text-[15px] text-white/90">
+            <ul className="mt-4 space-y-1 text-[15px] text-white/90">
               {FOOTER_QUICK_LINKS.map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href} className="hover:text-white">{l.label}</Link>
+                  <Link href={l.href} className="block py-1.5 hover:text-white">{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -92,10 +92,10 @@ export default function Footer() {
           {/* About Us */}
           <div>
             <h2 className="font-display text-xl text-white">About Us</h2>
-            <ul className="mt-5 space-y-3 text-[15px] text-white/90">
+            <ul className="mt-4 space-y-1 text-[15px] text-white/90">
               {FOOTER_ABOUT_LINKS.map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href} className="hover:text-white">{l.label}</Link>
+                  <Link href={l.href} className="block py-1.5 hover:text-white">{l.label}</Link>
                 </li>
               ))}
             </ul>

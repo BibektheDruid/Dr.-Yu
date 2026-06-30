@@ -7,6 +7,7 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: 96px; /* offset sticky header for #anchor links */
+    overflow-x: clip; /* safety net: never allow sideways scroll (clip keeps sticky header working) */
   }
   body {
     font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
@@ -16,6 +17,7 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent; /* no grey flash box on tap */
   }
   @media (min-width: 1024px) {
     body { font-size: 19px; }
@@ -25,9 +27,27 @@
     color: #0b0b0b;
     font-weight: 700;
     line-height: 1.18;
+    text-wrap: balance; /* avoid lone-word last lines when headings wrap on small screens */
   }
+  p { text-wrap: pretty; }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; height: auto; }
+
+  /* iOS Safari auto-zooms when focusing any control under 16px. Keep the 15px
+     design on desktop, but guarantee a 16px floor on phones so the page never zooms. */
+  @media (max-width: 767px) {
+    input, select, textarea { font-size: 16px; }
+  }
+
+  /* Honor users who ask for reduced motion (count-ups, smooth scroll, transitions) */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
 }
 
 @layer components {
