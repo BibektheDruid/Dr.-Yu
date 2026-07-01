@@ -15,10 +15,8 @@ Everything for the Dr. Weidong Yu engagement, ready to drop into a GitHub repo.
 - **Booking:** integrates with **Jane App** for clinic appointments.
 
 ## Live links
-- **One page for Dr. Yu: https://dr-yu.vercel.app/welcome** — a top toggle switches between **The Agreement** (lands here first) and **Your Brand Kit** (the intake form), in a single tab. The root (`/`) redirects here.
-- Standalone growth agreement (backup): https://dr-yu-growth-agreement.vercel.app
-
-The `/welcome` page is served by the `intake-form/` Next.js app. The agreement is embedded from `intake-form/public/agreement.html`, a copy of `proposals/dr-yu-growth-agreement.html` with its own nav hidden — **keep the two in sync** if the agreement changes.
+- Growth agreement: https://dr-yu-growth-agreement.vercel.app
+- Intake form: _not deployed yet_
 
 ---
 
